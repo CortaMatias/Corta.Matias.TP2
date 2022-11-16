@@ -41,7 +41,9 @@
   - Al apretar el boton Partidas del Lobby entramos a esta vista donde estara la lista de Partidas jugadas con sus respectivos Jugadores ganador y perdedor, el puntaje de la partida,el id de dicha partida, la fecha en la que se jugo y la cantidad de manos que llevo que finalice la partida. 
   
   ![](https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Partida.jpeg) </li>
-<ul/>
+</ul>
  
+ 
+ <h4> <
  
  
