@@ -17,7 +17,8 @@
   Las listas de partidas estara con los nombres de los Jugadores que esten dentro de la sala jugando una partida.
   Al hacerle doble click al boton se abrira "La sala".
   
-   ![Image text] (https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Lobby.jpeg)</li>
+   ![Image text] (https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Lobby.jpeg)
+ ![](https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Lobby.jpeg)</li>
   
   <li><h3>Crear Sala</h3>
   - Al hacer click en el boton "Crear Sala" entraremos en esta vista que nos permitira seleccionar los usuarios en un comboBox que seran traidos desde la base de datos. Debemos elegir 2 Usuarios y comenzar y crear la sala. Una vez creada la sala veremos en la lista del lobby agregada la sala. Y podremos acceder a ella haciendole doble click en el item del ListBox;
