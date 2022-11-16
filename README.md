@@ -45,6 +45,12 @@
 </ul>
  
  
- <h4> <
+ <h4> Justificacion tecnica</h4>
+ 
+ - Se logro implementar todos los temas requeridos.
+ - SQL -> Lo utilice para persistir los datos de las partidas jugadas y tambien los datos de los jugadores asi como tambien para actualizar dichos datos.
+ - Manejo de excepciones -> Lo utilice para manejar lo que serian las interacciones con archivos y base de datos o errores generados por el usuario a la hora de manejar la aplicacion.
+ - Unit testing -> Lo utilice para chequear el correcto funcionamiento invididual de los metodos junto avanzaba con el proyecto lo cual me vino muy bien para poner a prueba los metodos ante diferentes circunstancias como por ejemplo para calcular el envido, manejar el ranking de cartas, etc.
+ - Generics -> Lo utilice para la clase static de serializacion JSON con el objetivo de poder Serializar o Deserializar cualquier tipo de objeto, donde T sea una clase con un constructor public(). Tambien lo utilize para la interfaz IDataAcess
  
  
