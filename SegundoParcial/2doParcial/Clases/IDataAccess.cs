@@ -12,5 +12,6 @@ namespace _2doParcial.Clases
         public bool Agregar(T param);
         public bool Eliminar(T param);
         public bool Modificar(T param);
+        //public bool Seleccionar(T param);
     }
 }

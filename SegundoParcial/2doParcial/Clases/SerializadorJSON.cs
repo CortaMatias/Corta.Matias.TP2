@@ -20,6 +20,10 @@ namespace _2doParcial.Clases
 
 
 
+        /// <summary>
+        /// Deserializa un objeto alojado en el directorio que le indiquemos y lo retorna. 
+        /// </summary>
+        /// <returns></returns>
         public T DeSerialize()
         {
             T obj = new T();
@@ -36,6 +40,12 @@ namespace _2doParcial.Clases
             return obj;
         }
 
+
+        /// <summary>
+        ///  Serializa un objeto en el archivo que le indiquemos y retorna true si pude hacerlo.
+        /// </summary>
+        /// <param name="serializar"></param>
+        /// <returns></returns>
         public bool Serialize(T serializar)
         {
             bool todoOk = false;

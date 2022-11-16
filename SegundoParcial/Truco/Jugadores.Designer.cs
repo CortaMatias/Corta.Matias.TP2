@@ -30,41 +30,32 @@ namespace Truco
         private void InitializeComponent()
         {
             this.dgvJugadores = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvJugadores
             // 
             this.dgvJugadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJugadores.Location = new System.Drawing.Point(20, 59);
+            this.dgvJugadores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvJugadores.Location = new System.Drawing.Point(0, 0);
             this.dgvJugadores.Name = "dgvJugadores";
+            this.dgvJugadores.ReadOnly = true;
             this.dgvJugadores.RowTemplate.Height = 25;
-            this.dgvJugadores.Size = new System.Drawing.Size(496, 331);
+            this.dgvJugadores.Size = new System.Drawing.Size(463, 469);
             this.dgvJugadores.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvJugadores);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 396);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(20, 20);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 12);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(147, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(131, 35);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar Jugador";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -72,9 +63,9 @@ namespace Truco
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(173, 20);
+            this.btnEditar.Location = new System.Drawing.Point(149, 12);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(170, 23);
+            this.btnEditar.Size = new System.Drawing.Size(151, 35);
             this.btnEditar.TabIndex = 3;
             this.btnEditar.Text = "Editar Jugador";
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -82,40 +73,50 @@ namespace Truco
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(349, 20);
+            this.btnAgregar.Location = new System.Drawing.Point(306, 12);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(178, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(150, 35);
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar Jugador";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // groupBox2
+            // panel1
             // 
-            this.groupBox2.Controls.Add(this.btnEliminar);
-            this.groupBox2.Controls.Add(this.btnAgregar);
-            this.groupBox2.Controls.Add(this.btnEditar);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(550, 56);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnEditar);
+            this.panel1.Controls.Add(this.btnAgregar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(463, 63);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvJugadores);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(463, 469);
+            this.panel2.TabIndex = 6;
             // 
             // Jugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 396);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(463, 532);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(479, 571);
+            this.MinimumSize = new System.Drawing.Size(479, 571);
             this.Name = "Jugadores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jugadores";
             this.Load += new System.EventHandler(this.Jugadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -123,10 +124,10 @@ namespace Truco
         #endregion
 
         private System.Windows.Forms.DataGridView dgvJugadores;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

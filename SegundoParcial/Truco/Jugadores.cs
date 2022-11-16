@@ -16,6 +16,7 @@ namespace Truco
 
         List<Usuario> listaUsuarios;
 
+
         public Jugadores(List<Usuario> listaUsuarios)
         {
             this.listaUsuarios = listaUsuarios;
@@ -23,24 +24,28 @@ namespace Truco
         }
 
         private void Jugadores_Load(object sender, EventArgs e)
-        {
-            dgvJugadores.DataSource = listaUsuarios;            
+        {             
+            dgvJugadores.DataSource = listaUsuarios;
+            dgvJugadores.Columns[4].Visible = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if(dgvJugadores.CurrentRow.DataBoundItem is not null)
-            {
-                DataAccess_Usuarios eliminar = new();
+            {               
                 try
                 {
-                    eliminar.BorrarUsuario((Usuario)dgvJugadores.CurrentRow.DataBoundItem);
-                    this.listaUsuarios = eliminar.ObtenerUsuarios();
-                    dgvJugadores.DataSource = listaUsuarios;
+                    Usuario usuario =((Usuario)dgvJugadores.CurrentRow.DataBoundItem);
+                    if (usuario.Eliminar(usuario))
+                    {
+                        this.listaUsuarios = usuario.Obtener();
+                        dgvJugadores.DataSource = listaUsuarios;
+                        dgvJugadores.Columns[4].Visible = false;
+                    }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error al eliminar el usuario");
                 }
                
             }
@@ -51,47 +56,51 @@ namespace Truco
         {
             if(dgvJugadores.CurrentRow.DataBoundItem is not null)
             {
-                DataAccess_Usuarios editar = new();
+                
                
                 DetalleJugador formDetalle = new((Usuario) dgvJugadores.CurrentRow.DataBoundItem);
-                formDetalle.ShowDialog();
+                formDetalle.txtNick.Enabled = false;
+                formDetalle.ShowDialog();                
                 try
                 {
-                    Usuario editado = new(formDetalle.Id, formDetalle.Nick, formDetalle.Victorias, formDetalle.Derrotas);                    
-                    editar.ModificarUsuario(editado);
-                    this.listaUsuarios = editar.ObtenerUsuarios();
-                    dgvJugadores.DataSource = listaUsuarios;
+                    Usuario editado = new(formDetalle.Id, formDetalle.Nick, formDetalle.Victorias, formDetalle.Derrotas);
+                    if (editado.Modificar(editado))
+                    {
+                        this.listaUsuarios = editado.Obtener();
+                        dgvJugadores.DataSource = listaUsuarios;
+                        dgvJugadores.Columns[4].Visible = false;
+                    }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error al modificar el usuario");
                 }
             }
             
         }
 
-
-
-        //HACER AGREGAR USUARIO
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DataAccess_Usuarios agregar = new();
             DetalleJugador formDetalle = new();
+            formDetalle.txtNick.Enabled = true;
             formDetalle.ShowDialog();
-
+           
             try
             {
                 Usuario nuevoUsuario = new(0, formDetalle.Nick, formDetalle.Victorias, formDetalle.Derrotas);
-                agregar.AgregarUsuario(nuevoUsuario);
-                this.listaUsuarios = agregar.ObtenerUsuarios();
-                dgvJugadores.DataSource = listaUsuarios;
+                if (nuevoUsuario.Agregar(nuevoUsuario))
+                {
+                    this.listaUsuarios = nuevoUsuario.Obtener();
+                    dgvJugadores.DataSource = listaUsuarios;
+                    dgvJugadores.Columns[4].Visible = false;
+                }                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al agregar pasajero");
             }
         }
 
-       
+
     }
 }

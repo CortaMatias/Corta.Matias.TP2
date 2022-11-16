@@ -70,6 +70,7 @@ namespace Truco
             // 
             // txtNick
             // 
+            this.txtNick.Enabled = false;
             this.txtNick.Location = new System.Drawing.Point(120, 4);
             this.txtNick.MaxLength = 25;
             this.txtNick.Name = "txtNick";
@@ -112,6 +113,7 @@ namespace Truco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(278, 163);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.txtDerrotas);
@@ -123,7 +125,8 @@ namespace Truco
             this.MaximumSize = new System.Drawing.Size(294, 202);
             this.MinimumSize = new System.Drawing.Size(294, 202);
             this.Name = "DetalleJugador";
-            this.Text = "DetalleJugador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Datos del jugador";
             this.Load += new System.EventHandler(this.DetalleJugador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -136,10 +139,10 @@ namespace Truco
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNick;
         private System.Windows.Forms.TextBox txtVictorias;
         private System.Windows.Forms.TextBox txtDerrotas;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        public System.Windows.Forms.TextBox txtNick;
     }
 }

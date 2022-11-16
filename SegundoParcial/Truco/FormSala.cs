@@ -1,4 +1,5 @@
 ﻿using _2doParcial;
+using _2doParcial.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,23 +16,16 @@ namespace Truco
     public partial class FormSala : Form
     {
         private Sala sala;
-        private CancellationTokenSource cancelarToken = new(); 
+        private CancellationTokenSource cancelarToken = new();
+        
 
         public FormSala(Sala sala)
-        {
+        {     
+            InitializeComponent();         
+            this.sala = sala;
+            sala.Token = cancelarToken.Token;
+            sala.actualizar += ActualizarRichText;               
             
-            InitializeComponent();
-            //richTextBox1.Text = sala.Log;
-            if (sala is null)
-            {
-                MessageBox.Show("Error al crear la sala, intente de nuevo");
-                this.Close();
-            }
-            else
-            {
-                this.sala = sala;
-                sala.actualizar += ActualizarRichText;                
-            }
         }
 
         public void ActualizarRichText(object sender, EventArgs e)
@@ -39,13 +33,20 @@ namespace Truco
             if (InvokeRequired)
             {
                 EventHandler delegado = ActualizarRichText;
-                Invoke(delegado,sender, e);
+                try
+                {
+                    Invoke(delegado, sender, e);
+                }
+                catch (Exception)
+                {
+
+                }
             }
             else
             {
-                label1.Text = $" Jugador 1:{sala.Jugador1.ToString()} -- Puntaje: {sala.Jugador1.Puntaje}";
-                label2.Text = $" Jugador 2:{sala.Jugador2.ToString()} -- Puntaje: {sala.Jugador2.Puntaje}";
-                richTextBox1.Text = richTextBox1.Text.Insert(0, sala.Log);
+                label1.Text = $"{sala.Jugador1.ToString()}--Puntos:{sala.Jugador1.Puntaje}";
+                label2.Text = $"{sala.Jugador2.ToString()}--Puntos:{sala.Jugador2.Puntaje}";
+                richTextBox1.Text = sala.Log;               
             }          
         }    
 
@@ -63,14 +64,27 @@ namespace Truco
         {
             if (MessageBox.Show("Desea finalizar la partida?", "Finalizacion partida", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show("Se cancelo la partida");                
-                sala.TerminoPartida = true;
-                this.Hide();
+                MessageBox.Show("Se cancelo la partida, se agregara a la lista de partidas terminadas");
                 this.cancelarToken.Cancel();
+                sala.TerminoPartida = true;
+                this.Hide();                
             }
             else
             {
                 MessageBox.Show("Se cancelo el cierre la partida");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ManejadorArchivoTxt.Escribir(richTextBox1.Text, $"Partida{ManejadorArchivoTxt.Partidas}");
+                MessageBox.Show("Se guardaron los logs de la partida en una carpeta sobre el Escritorio"); 
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al crear el archivo");
             }
         }
     }

@@ -9,4 +9,3 @@ C:\Users\Mati\source\repos\SegundoParcial\2doParcial\obj\Debug\net5.0\Clases.csp
 C:\Users\Mati\source\repos\SegundoParcial\2doParcial\obj\Debug\net5.0\Clases.dll
 C:\Users\Mati\source\repos\SegundoParcial\2doParcial\obj\Debug\net5.0\ref\Clases.dll
 C:\Users\Mati\source\repos\SegundoParcial\2doParcial\obj\Debug\net5.0\Clases.pdb
-C:\Users\Mati\source\repos\SegundoParcial\2doParcial\obj\Debug\net5.0\Clases.csproj.AssemblyReference.cache

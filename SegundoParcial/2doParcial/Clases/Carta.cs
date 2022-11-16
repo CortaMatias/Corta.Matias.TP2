@@ -54,6 +54,11 @@ namespace _2doParcial
             return $"{this.numero}-{this.Tipo.ToUpper()}";
         }
 
+
+        /// <summary>
+        /// Calcula el ranking de cartas segun el truco. del 0(los 4) al 13(ancho de espada) 
+        /// </summary>
+        /// <returns></returns>
         public int rankingCartas()
         {
             switch (this.numero)

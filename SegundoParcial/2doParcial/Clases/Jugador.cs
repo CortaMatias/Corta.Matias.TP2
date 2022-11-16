@@ -17,10 +17,11 @@ namespace _2doParcial
         private int envidoJugadorCantado = -1;
         private bool esMano;
         private int puntaje;
+        private int cantCartasBuenas;
+        private int rondasGanadas;
 
-
-
-        public Jugador(Usuario usuario)         {
+        public Jugador(Usuario usuario)
+        {
             this.Usuario = usuario;
             this.mano = new List<Carta>();
             this.cartasJugadas = new List<Carta>();
@@ -34,15 +35,21 @@ namespace _2doParcial
         public int Puntaje { get => puntaje; set => puntaje = value; }
         public Usuario Usuario { get => usuario; set => usuario = value; }
         public int EnvidoJugadorCantado { get => envidoJugadorCantado; set => envidoJugadorCantado = value; }
-
+        public int CantCartasBuenas { get => cantCartasBuenas; set => cantCartasBuenas = value; }
+        public int RondasGanadas { get => rondasGanadas; set => rondasGanadas = value; }
 
         public override string ToString()
         {
-            return $" {this.Usuario.NickName}";
+            return $"{this.Usuario.NickName}";
         }
 
 
         #region #Envido
+
+        /// <summary>
+        /// Calcula el envido que tenga el jugador en la mano
+        /// </summary>
+        /// <returns></returns>
         public int calcularEnvido()
         {
             int envido = 0;
@@ -72,6 +79,12 @@ namespace _2doParcial
         }
 
 
+        /// <summary>
+        /// Decide si el jugador va a cantar o no envido y retorna dicha decision
+        /// </summary>
+        /// <param name="estado"></param>
+        /// <param name="jugadorContrario"></param>
+        /// <returns></returns>
         public int DecidirEnvido(int estado, Jugador jugadorContrario)
         /*  Estados :  0  --> No quiero/No canto nada
          *  1 --> Envido
@@ -147,83 +160,21 @@ namespace _2doParcial
 
             return decision;
         }
-
         #endregion
 
 
 
 
 
-        #region #Truco      
-        //public int decidirTruco(int estado, Jugador jugadorContrario)
-        //{
-        //    /*
-        //    Estados:
-        //      0 --> No quiero / No se cantó
-        //      1 --> Truco
-        //      2 --> Retruco
-        //      3 --> Vale 4
-        //    *** Si devuelve el mismo numero que se le paso a la funcion, se le interpreta como un quiero
-        //    */
+        #region #Truco     
+      
 
-        //    Random random = new Random();
-
-        //    int cantCartasTiradas = jugadorContrario.CartasJugadas.Count + cartasJugadas.Count;
-
-        //    switch (cantCartasTiradas)
-        //    {
-        //        case 0:
-        //        case 1: // Primera mano
-        //            if (estado == 0)            // Si no se canto nada..
-        //                return 0;                // .. No cantar.
-        //            else
-        //            {                     // Pero si me cantaron..
-        //                if (CalcularCartasBuenas() >= 1 && CalcularCartasMedianas() >= 1) // .. Solo aceptar si tengo más de una buena carta y una media
-        //                    return estado;
-        //            }
-        //            break;
-        //        case 4:
-        //        case 5: // Tercera Mano
-        //                // Si esta en la ultima mano y solo falto tirar yo
-        //            if (jugadorContrario.CartasJugadas.Count - 1 == cartasJugadas.Count)
-        //            {
-        //                if (mano[0].rankingCartas() > jugadorContrario.CartasJugadas[2].rankingCartas()) // Si le gano, canto
-        //                    return estado;
-        //                // Si le empata, pero gano la primera
-        //                else if (mano[0].rankingCartas() > jugadorContrario.CartasJugadas[2].rankingCartas() && jugadorContrario.CartasJugadas[2].rankingCartas() == mano[0].rankingCartas())
-        //                    return estado + random.nextInt(4 - estado);
-        //            }
-        //            else if (cartasJugadas.size() == 3 && cartasJugadas.get(2).rankingCarta() > 9)
-        //            { // Si queda una buena carta
-        //                if (estado == 3)
-        //                    return 3;
-        //                return estado + random.nextInt(3 - estado);      // Apostar todo
-        //            }
-        //            break;
-        //        case 2:
-        //        case 3: // Segunda mano
-        //            if (cantBuenasCartas() > 1)
-        //            {  // Si tengo mas de una buena carta apostar todo
-        //                if (estado == 3)
-        //                    return 3;
-        //                return estado + random.nextInt(3 - estado);
-        //            }
-        //            // Si empaté la anterior...
-        //            if (p.getCartasJugadas().get(p.getCartasJugadas().size() - 1).rankingCarta() == cartasJugadas.get(cartasJugadas.size() - 1).rankingCarta())
-        //            {
-        //                if (cantBuenasCartas() >= 1)
-        //                {
-        //                    if (estado == 3)
-        //                        return 3;
-        //                    return estado + random.nextInt(3 - estado);
-        //                }
-        //            }
-        //            break;
-        //    }
-        //    return 0;
-        //}
-
-
+      
+        /// <summary>
+        /// Define que carta va a jugar el jugador segun el contexto 
+        /// </summary>
+        /// <param name="jugadorContrario"></param>
+        /// <returns></returns>
         public Carta JugarTurno(Jugador jugadorContrario)
             {
             if (jugadorContrario.CartasJugadas.Count == 0) //Si soy el primero.
@@ -232,16 +183,18 @@ namespace _2doParcial
 
             if(jugadorContrario.CartasJugadas.Count == 1 && cartasJugadas.Count == 0)
             {
+
+
                 for (int i = 0; i < mano.Count; i++) //Recorro de la peor a la mejor carta buscando si hay una carta que empata la que ya tiro
                 {       if ((jugadorContrario.CartasJugadas.Count >= 2) && jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() == mano[i].rankingCartas())
                         return TirarCartaIndex(i); //Si emparda la juega
 
                         if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() > mano[i].rankingCartas()) return tirarPeorCarta();
+                        if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() < mano[i].rankingCartas())
+                        if (mano[i] == mano[0]) return TirarCartaIndex(i); //Si gana la tira  //
                 }
                 if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() < mano[0].rankingCartas()) return TirarCartaIndex(0); //Nuevo
                 if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() < mano[1].rankingCartas()) return TirarCartaIndex(1); //Nuevo
-
-
             }
 
             if (cartasJugadas.Count >= 1) // Si ya jugamos una o mas cartas
@@ -249,13 +202,14 @@ namespace _2doParcial
 
                 if (jugadorContrario.CartasJugadas[0].rankingCartas() == cartasJugadas[0].rankingCartas())
                     return tirarMejorCarta(); //Y la primera fue parda jugar la mejor siempre.
+                                              
 
                 if (jugadorContrario.CartasJugadas[0].rankingCartas() > cartasJugadas[0].rankingCartas()) //Si gano primera el contrario
                 {
                     for (int i = 0; i < mano.Count; i++) //Recorro de la peor a la mejor carta buscando si hay una carta que empata la que ya tiro
                     {
-                           if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() < mano[i].rankingCartas())
-                            return TirarCartaIndex(i); //Si gana la tira
+                           if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() < mano[i].rankingCartas())                           
+                                if(mano[i] == mano[0]) return TirarCartaIndex(i); //Si gana la tira        //              
 
                         if ((jugadorContrario.CartasJugadas.Count >= 2 ) && jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() == mano[i].rankingCartas())
                             return TirarCartaIndex(i); //Si emparda la juega                        
@@ -271,6 +225,11 @@ namespace _2doParcial
             return tirarMejorCarta(); //Tira la carta que le queda;
         }
 
+
+        /// <summary>
+        /// Retorn un string con las cartas del jugador
+        /// </summary>
+        /// <returns></returns>
         public string MostrarCartas()
         {
             string mensaje = "";
@@ -285,7 +244,7 @@ namespace _2doParcial
         
 
         /// <summary>
-        /// Devuelve la carta que se va a tirar a la mesa
+        /// Devuelve la carta que se va a tirar a la mesa segun el indice
         /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
@@ -297,6 +256,10 @@ namespace _2doParcial
             return aTirar;
         }
 
+
+        /// <summary>
+        /// Ordena la mano del jugador de menor a mayor segun el ranking de cartas
+        /// </summary>
         public void ordenarMano()
         {
             List<Carta> temporal = new();
@@ -316,6 +279,11 @@ namespace _2doParcial
             //mano = temporal;
         }
 
+
+        /// <summary>
+        /// tira una carta random de la mano del jugador, se utiliza para el primer jugador en jugar en toda la mano
+        /// </summary>
+        /// <returns></returns>
         public Carta TirarRandom()
         {
             int index = new Random().Next(1, 3);
@@ -325,7 +293,11 @@ namespace _2doParcial
             return aTirar;
         }
 
-
+        /// <summary>
+        /// Tira una carta segun el indice de la misma en la mano del jugador
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <returns></returns>
         public Carta TirarCartaIndex(int indice)
         {
             Carta aTirar = mano[indice];
@@ -334,6 +306,10 @@ namespace _2doParcial
             return aTirar;
         }
 
+        /// <summary>
+        /// Hace que el jugador tire la mejor cartas que tenga en la mano segun el rankign de cartas
+        /// </summary>
+        /// <returns></returns>
         public Carta tirarMejorCarta()
         {
             if (mano.Count == 0) return null;
@@ -351,6 +327,11 @@ namespace _2doParcial
             return aTirar;
         }
 
+
+        /// <summary>
+        /// Hace que el jugador tire la peor carta que tenga en la mano segun el ranking de cartas
+        /// </summary>
+        /// <returns></returns>
         public Carta tirarPeorCarta()
         {
             if (mano.Count == 0) return null;
@@ -368,25 +349,107 @@ namespace _2doParcial
             cartasJugadas.Add(aTirar);
             return aTirar;
         }
-
+         /// <summary>
+         /// Calcula cantidad de caartas buenas que tiene el jugador segun el ranking de cartas
+         /// </summary>
+         /// <returns></returns>
         public int CalcularCartasBuenas() //Devuelve la cantidad de cartas "buenas" que tiene el jugador
         {
             int cantidad = 0;
 
             for (int i = 0; i < mano.Count; i++)
-                if (mano[i].rankingCartas() > 7) cantidad++;
+                if (mano[i].rankingCartas() >= 7) cantidad++;
             return cantidad;
         }
 
+        /// <summary>
+        /// Calcula la cantidad de cartas medianas que tiene el jugador segun el ranking de las cartas
+        /// </summary>
+        /// <returns></returns>
         public int CalcularCartasMedianas()  //Devuelve la cantidad de cartas medianas que tiene el jugador
         {
             int cantidad = 0;
-
             for (int i = 0; i < mano.Count; i++)
-                if (mano[i].rankingCartas() > 4 && mano[i].rankingCartas() < 8) cantidad++;
+                if (mano[i].rankingCartas() > 3 && mano[i].rankingCartas() < 7) cantidad++;
             return cantidad;
 
         }
+
+
+        public int DecidirTruco()
+        {
+            if (this.CantCartasBuenas >= 1) return 1;
+            else return 0;
+        }
+
+        //public int DecidirTruco(int estado, Jugador jugadorContrario)
+        //{
+        //    /*
+        //    Estados:
+        //      0 --> No quiero / No se cantó
+        //      1 --> Truco
+        //      2 --> Retruco
+        //      3 --> Vale 4
+        //    *** Si devuelve el mismo numero que se le paso a la funcion, se le interpreta como un quiero
+        //    */
+        //    Random random = new Random();
+
+        //    int cantCartasTiradas = jugadorContrario.CartasJugadas.Count + cartasJugadas.Count;
+
+        //    switch (cantCartasTiradas)
+        //    {
+        //        case 0:
+        //        case 1: // Primera mano
+        //            if (estado == 0)            // Si no se canto nada..
+        //                return 0;                // .. No cantar.                   
+        //            break;
+        //        case 2:
+        //        case 3: // Segunda mano
+        //            if (this.cantCartasBuenas>= 1)
+        //            {  // Si tengo mas de una buena carta 
+        //                if (estado == 3) return 3;
+        //                return estado+1;
+        //            }
+        //            // Si empaté la anterior...
+        //            if (jugadorContrario.CartasJugadas[jugadorContrario.CartasJugadas.Count - 1].rankingCartas() == CartasJugadas[CartasJugadas.Count - 1].rankingCartas())
+        //            {
+        //                if (this.cantCartasBuenas>= 1)
+        //                {
+        //                    if (estado == 3)
+        //                        return 3;
+        //                    return estado+1;
+        //                }                      
+        //            }                   
+        //            break;
+        //        case 4:
+        //        case 5: // Tercera Mano
+        //                // Si esta en la ultima mano y solo falto tirar yo
+        //            if (jugadorContrario.CartasJugadas.Count - 1 == cartasJugadas.Count)
+        //            {
+        //                if (mano[0].rankingCartas() > jugadorContrario.CartasJugadas[2].rankingCartas())
+        //                {
+        //                    // Si le gano, canto
+        //                    if (estado == 3) return 3; //OJO
+        //                    return estado+1;
+        //                }
+        //                // Si le empata, pero gano la primera
+        //                else if (mano[0].rankingCartas() > jugadorContrario.CartasJugadas[2].rankingCartas() && jugadorContrario.CartasJugadas[2].rankingCartas() == mano[0].rankingCartas())
+        //                {
+        //                    if (estado == 3) return 3;
+        //                    return estado+1;
+        //                }                     
+        //            }
+        //            else if (cartasJugadas.Count == 3 && cartasJugadas[2].rankingCartas() > 9)
+        //            { // Si queda una buena carta
+        //                if (estado == 3) return 3;
+        //                return estado+1;
+        //            }
+        //            break;                
+        //    }
+        //    return 0; //Devuelve cero si no se cumple ninguna condicion del Switch para aceptar o retrucar.
+        //}
+
+
         #endregion
     }
 }

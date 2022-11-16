@@ -1,0 +1,202 @@
+[
+  {
+    "Numero": 1,
+    "Valor": 13,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 2,
+    "Valor": 8,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 3,
+    "Valor": 9,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 4,
+    "Valor": 0,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 5,
+    "Valor": 1,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 6,
+    "Valor": 2,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 7,
+    "Valor": 11,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 10,
+    "Valor": 4,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 11,
+    "Valor": 5,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 12,
+    "Valor": 6,
+    "Tipo": "espada"
+  },
+  {
+    "Numero": 1,
+    "Valor": 12,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 2,
+    "Valor": 8,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 3,
+    "Valor": 9,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 4,
+    "Valor": 0,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 5,
+    "Valor": 1,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 6,
+    "Valor": 2,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 7,
+    "Valor": 3,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 10,
+    "Valor": 4,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 11,
+    "Valor": 5,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 12,
+    "Valor": 6,
+    "Tipo": "basto"
+  },
+  {
+    "Numero": 1,
+    "Valor": 7,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 2,
+    "Valor": 8,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 3,
+    "Valor": 9,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 4,
+    "Valor": 0,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 5,
+    "Valor": 1,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 6,
+    "Valor": 2,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 7,
+    "Valor": 10,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 10,
+    "Valor": 4,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 11,
+    "Valor": 5,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 12,
+    "Valor": 6,
+    "Tipo": "oro"
+  },
+  {
+    "Numero": 1,
+    "Valor": 7,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 2,
+    "Valor": 8,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 3,
+    "Valor": 9,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 4,
+    "Valor": 0,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 5,
+    "Valor": 1,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 6,
+    "Valor": 2,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 7,
+    "Valor": 3,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 10,
+    "Valor": 4,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 11,
+    "Valor": 5,
+    "Tipo": "copa"
+  },
+  {
+    "Numero": 12,
+    "Valor": 6,
+    "Tipo": "copa"
+  }
+]

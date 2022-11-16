@@ -16,6 +16,8 @@ namespace Truco
         private Usuario jugador1;
         private Usuario jugador2;
         private List<Usuario> listaUsuarios;
+        private List<Usuario> listaUsuariosAux;
+
         
 
         public CrearSala(List<Usuario> listaUsuarios) 
@@ -38,8 +40,10 @@ namespace Truco
         }
 
         private void CrearSala_Load(object sender, EventArgs e)
-        {        
-                foreach (Usuario u in listaUsuarios)
+        {
+            cmbJugador1.Items.Clear();
+            cmbJugador2.Items.Clear();
+            foreach (Usuario u in listaUsuarios)
                 {
                     this.cmbJugador1.Items.Add($"Id:{u.Id} --  Nick : {u.NickName}");
                     this.cmbJugador2.Items.Add($"Id:{u.Id} --  Nick : {u.NickName}");
@@ -49,16 +53,19 @@ namespace Truco
         private void cmbJugador1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indice = cmbJugador1.SelectedIndex;
-            cmbJugador2.Items.RemoveAt(indice);           
+            try { cmbJugador2.Items.RemoveAt(indice); }
+            catch (Exception){ }
+                       
             this.jugador1 = listaUsuarios[indice];
             cmbJugador2.Enabled = true;
-            listaUsuarios.RemoveAt(indice);
+            listaUsuariosAux = listaUsuarios;
+            listaUsuariosAux.RemoveAt(indice);
         }
 
         private void cmbJugador2_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indice = cmbJugador2.SelectedIndex;         
-            if(indice != -1) this.jugador2 = listaUsuarios[indice];
+            if(indice != -1) this.jugador2 = listaUsuariosAux[indice];
 
         }
     }
