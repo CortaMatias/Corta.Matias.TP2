@@ -15,6 +15,7 @@
   
   Las listas de partidas estara con los nombres de los Jugadores que esten dentro de la sala jugando una partida.
   Al hacerle doble click al boton se abrira "La sala".
+  Tambien se podra acceder a la lista de partidas terminadas teniendo la opcion de abrirlas y ver que paso en esa partida.
   
  ![](https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Lobby.jpeg)</li>
   
