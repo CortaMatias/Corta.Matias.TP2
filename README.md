@@ -28,6 +28,7 @@
   - Al hacer doble click sobre las listas de partidas se abrira esta vista que nos permite ver lo que esta pasando en la partida, o lo que ya paso si termino.
   - Si la partida esta en curso tendremos la opcion de finalizar la partida de manera manual. Esto hara que la sala salga de la lista de partidas que se esten jugando y se vaya a la lista de partidas finalizadas, sin embargo estas partidas no seran guardadas en la base de datos ya que no finalizaron de manera "Normal".
   - Tambien tendremos la opcion ya sea que se este jugando o no la partida de apretar el Boton "Descargar Logs" que nos permitira descargar el resumen de la partida en un archivo txt que estara dentro de una carpeta en el escritorio.
+   
  ![](https://github.com/CortaMatias/Corta.Matias.TP2/blob/main/Fotos%20Readme/Sala.jpeg) </li> 
   
   <li><h3>Jugadores</h3>
