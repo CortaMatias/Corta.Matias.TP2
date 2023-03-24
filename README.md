@@ -1,12 +1,5 @@
 ## **TRUCO.NET**
 
- SOBRE MI : 
- 
- 
-### Mi nombre es **Matias Corta**
-
-*Este trabajo fue mi mayor desafio desde que estoy programando, me gusto mucho hacerlo porque me enseño un monton de cosas. Estoy contento con el proyecto que logre, el mayor desafio se me planteo a la hora de desarrollar la logica de las partidas de truco ya que son 100% simuladas pero no de manera random, sino que tiene una logica con la que se van a manejar los jugadores lo mas parecido posible a la realidad. Espero que les guste!*
-
 <h2> Resumen de la aplicacion </h2>
 
 <ul>
